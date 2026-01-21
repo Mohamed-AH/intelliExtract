@@ -6,6 +6,22 @@
 
 This tool automatically extracts structured data from Telegram messages containing Islamic lectures, series lessons, and Friday sermons (Khutbas). It uses Claude AI to intelligently parse Arabic text and classify content according to detailed extraction rules.
 
+### Key Findings
+
+**From 268 Telegram messages, we identified:**
+- ✅ **14 unique series** (after correcting for multi-day classes)
+- 📚 **265 lessons** extracted and organized
+- 🎓 **ALL series are taught 2-7 times per week** (intensive schedule!)
+- 📊 **29.7% overall completeness** (~628 lessons missing)
+- 📍 **216 masjid lessons** (81.5%) + 49 online (18.5%)
+
+**Top Series:**
+1. تأسيس الأحكام شرح عمدة الأحكام (47 lessons, 7x/week)
+2. الملخص شرح كتاب التوحيد (34 lessons, 6x/week)
+3. الملخص الفقهي (31 lessons, 6x/week)
+
+See `SERIES_ANALYSIS_SUMMARY.md` for complete details.
+
 ## Features
 
 - ✅ Parses HTML exports from Telegram
@@ -41,7 +57,21 @@ set ANTHROPIC_API_KEY=your-api-key-here
 
 ## Usage
 
-Run the extraction script:
+### Quick Start - View Organized Results
+
+The repository includes pre-processed data organized by series:
+
+```bash
+# View the corrected series organization (recommended)
+open lectures_by_series_corrected.csv
+
+# Read the analysis summary
+cat SERIES_ANALYSIS_SUMMARY.md
+```
+
+### Run Extraction (Optional)
+
+If you want to re-extract from source:
 
 ```bash
 python extract_lectures.py
@@ -51,6 +81,18 @@ The script will:
 1. Parse all messages from `messages.html`
 2. Process each message through Claude API
 3. Generate `extracted_lectures_data.csv`
+
+### Analyze Series Organization
+
+To analyze lessons into series accounting for multi-day classes:
+
+```bash
+python analyze_series_corrected.py
+```
+
+This generates:
+- `lectures_by_series_corrected.csv` - Lessons grouped by series
+- Series statistics showing multi-day teaching patterns
 
 ## Output Format
 
@@ -86,11 +128,23 @@ The tool follows detailed rules defined in `EXTRACTION_PROMPT.md`:
 
 ## Files
 
-- `extract_lectures.py` - Main extraction script
-- `messages.html` - Telegram export (source data)
+### Source Data
+- `messages.html` - Telegram export (source data, 268 messages)
+- `csvCleanSample.xlsx` - Weekly schedule reference
 - `EXTRACTION_PROMPT.md` - Detailed extraction rules
+
+### Extraction Scripts
+- `extract_lectures.py` - Main extraction script (requires API key)
+- `extract_improved_with_schedule.py` - Enhanced extraction using weekly schedule
+- `analyze_series_corrected.py` - Series analysis accounting for multi-day classes
 - `ai_extraction_app.jsx` - React web app version
-- `extracted_lectures_data.csv` - Output file (generated)
+
+### Output Files (Pre-Generated)
+- **`lectures_by_series_corrected.csv`** ⭐ - **RECOMMENDED**: Lessons organized by series (86KB)
+- `extracted_lectures_improved.csv` - All 268 messages with improved extraction (83KB)
+- `extracted_lectures_data.csv` - Initial extraction output
+- **`SERIES_ANALYSIS_SUMMARY.md`** ⭐ - **READ THIS**: Complete series analysis and findings
+- `EXTRACTION_REPORT.md` - Detailed extraction methodology and stats
 
 ## Example Output
 
