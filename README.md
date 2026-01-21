@@ -130,7 +130,8 @@ The tool follows detailed rules defined in `EXTRACTION_PROMPT.md`:
 
 ### Source Data
 - `messages.html` - Telegram export (source data, 268 messages)
-- `csvCleanSample.xlsx` - Weekly schedule reference
+- `csvCleanSample.xlsx` - Weekly schedule reference (Excel)
+- **`WEEKLY_SCHEDULE_REFERENCE.md`** ⭐ - **Authoritative teaching schedule** extracted from Excel
 - `EXTRACTION_PROMPT.md` - Detailed extraction rules
 
 ### Extraction Scripts
