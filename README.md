@@ -62,12 +62,17 @@ set ANTHROPIC_API_KEY=your-api-key-here
 The repository includes pre-processed data organized by series:
 
 ```bash
-# View the corrected series organization (recommended)
-open lectures_by_series_corrected.csv
+# BEST: View lessons sorted by series and date (easiest to spot gaps)
+open lectures_sorted_by_series.csv
 
 # Read the analysis summary
 cat SERIES_ANALYSIS_SUMMARY.md
+
+# Or view series with multi-day analysis
+open lectures_by_series_corrected.csv
 ```
+
+**TIP:** `lectures_sorted_by_series.csv` is sorted by series, then chronologically within each series. The `SequenceInSeries` column makes it trivial to identify missing lessons (e.g., if you see 1, 2, 4, 5, then lesson 3 is missing).
 
 ### Run Extraction (Optional)
 
@@ -141,8 +146,9 @@ The tool follows detailed rules defined in `EXTRACTION_PROMPT.md`:
 - `ai_extraction_app.jsx` - React web app version
 
 ### Output Files (Pre-Generated)
-- **`extracted_lectures_final.csv`** ⭐⭐ - **BEST FILE**: Schedule-based extraction with 47% accuracy (85KB)
-- **`lectures_by_series_corrected.csv`** ⭐ - Lessons organized by series (86KB)
+- **`lectures_sorted_by_series.csv`** ⭐⭐⭐ - **BEST FOR GAPS**: Sorted by series, then date - easy to spot missing lessons (90KB)
+- **`extracted_lectures_final.csv`** ⭐⭐ - Schedule-based extraction with 47% accuracy (85KB)
+- **`lectures_by_series_corrected.csv`** ⭐ - Lessons organized by series with multi-day analysis (86KB)
 - `extracted_lectures_improved.csv` - All 268 messages with improved extraction (83KB)
 - `extracted_lectures_data.csv` - Initial extraction output
 - **`WEEKLY_SCHEDULE_REFERENCE.md`** ⭐⭐ - **Authoritative teaching schedule** from Excel
