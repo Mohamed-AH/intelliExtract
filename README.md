@@ -141,10 +141,12 @@ The tool follows detailed rules defined in `EXTRACTION_PROMPT.md`:
 - `ai_extraction_app.jsx` - React web app version
 
 ### Output Files (Pre-Generated)
-- **`lectures_by_series_corrected.csv`** ⭐ - **RECOMMENDED**: Lessons organized by series (86KB)
+- **`extracted_lectures_final.csv`** ⭐⭐ - **BEST FILE**: Schedule-based extraction with 47% accuracy (85KB)
+- **`lectures_by_series_corrected.csv`** ⭐ - Lessons organized by series (86KB)
 - `extracted_lectures_improved.csv` - All 268 messages with improved extraction (83KB)
 - `extracted_lectures_data.csv` - Initial extraction output
-- **`SERIES_ANALYSIS_SUMMARY.md`** ⭐ - **READ THIS**: Complete series analysis and findings
+- **`WEEKLY_SCHEDULE_REFERENCE.md`** ⭐⭐ - **Authoritative teaching schedule** from Excel
+- **`SERIES_ANALYSIS_SUMMARY.md`** ⭐ - Complete series analysis and findings
 - `EXTRACTION_REPORT.md` - Detailed extraction methodology and stats
 
 ## Example Output
