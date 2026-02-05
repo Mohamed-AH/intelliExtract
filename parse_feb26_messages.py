@@ -55,6 +55,13 @@ def parse_messages(html_file):
                 if duration_div:
                     clip_length = duration_div.get_text(strip=True)
 
+                # If not in HTML duration div, try to extract from message text
+                # Pattern: "مدة الصوتية: XX:XX دقيقة"
+                if clip_length == 'N/A' and message_text:
+                    duration_match = re.search(r'مدة الصوتية:\s*(\d{1,2}:\d{2})\s*دقيقة', message_text)
+                    if duration_match:
+                        clip_length = duration_match.group(1)
+
                 messages.append({
                     'filename': filename.split('/')[-1],  # Just the filename
                     'message_text': message_text,
